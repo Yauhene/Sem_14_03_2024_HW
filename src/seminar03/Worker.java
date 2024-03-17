@@ -90,6 +90,30 @@ public class Worker implements Comparable<Worker> {
         }
     }
 
+
+    public void assign(String taskTarget, Worker worker) {
+        System.out.println("Постановка задачи от " + this.getSurname() + " (" + this.getPosition() + ") "
+                + " сотруднику " + worker.getSurname() + " (" + worker.getPosition() + "):");
+        if (worker.getSurname().equals(this.getSurname())) {
+            Task task = new Task(taskTarget, worker);
+            System.out.println(worker.getSurname() + " " + worker.getName() + " " + worker.getMiddleName()
+                    + " обязался " + taskTarget);
+        } else {
+//            System.out.println();
+            System.out.println("!!!!===========================================================!!!");
+            System.out.println("!!!! Попытка превышения полномочий у " + this.getSurname());
+            System.out.println("!!!! Сотрудник может определить задачу только для себя.");
+            System.out.println("!!!!===========================================================!!!");
+        }
+        System.out.println();
+    }
+    public void assign(String taskTarget) {
+        Task task = new Task(taskTarget, this);
+        System.out.println(this.getSurname() + " " + this.getName() + " " + this.getMiddleName()
+                + " взялся за задачу: " + taskTarget);
+        System.out.println();
+    }
+
     @Override
     public String toString() {
         return "\nWorker{" +
@@ -102,15 +126,6 @@ public class Worker implements Comparable<Worker> {
                 ", age=" + this.getAge() +
                 "}";
     }
-
-//    public static void addSalary(Worker[] workers, int age, int addAmount) {
-//        for (Worker worker : workers) {
-//            if (worker.getAge() >= age) {
-//                worker.setSalary(worker.getSalary() + addAmount);
-//            }
-//        }
-//        System.out.println("Зарплата повышена успешно!!!");
-//    }
 
     @Override
     public int compareTo(Worker o) {

@@ -23,6 +23,9 @@ public class Main {
                         LocalDate.of(1970, 11, 17)),
                 new Manager("Golopushko", "Apollonariy", "Mitrofanovitch", "manager",
                         "+375-29-649-49-49",3000,
+                        LocalDate.of(1968, 7, 13)),
+                new Manager("Zhuk", "Sergey", "Koloradovitch", "manager",
+                        "+375-29-649-49-50",3000,
                         LocalDate.of(1968, 7, 13))
         };
 
@@ -31,35 +34,40 @@ public class Main {
         System.out.println("Доблестная команда сразу после внесения в массив:");
         System.out.println(workerList);
 
+        System.out.println();
         System.out.println("Average age: " + getAverageAge(workers));
         System.out.println("Average salary: " + getAverageSalary(workers));
 
         Manager.addSalary(workers, 45, 50);
-
         System.out.println(Arrays.toString(workers));
 
-
-
-        System.out.println("---".repeat(5));
         Collections.sort(workerList);
+        System.out.println("---".repeat(5) + " Те же после сортировки списка:");
         System.out.println(workerList);
         System.out.println("---".repeat(5));
 
         workerList.sort(new WorkerSalaryComparator());
+        System.out.println("---".repeat(5) + " Они же после сортировки списка по зарплате с помощью WorkerSalaryComparator():");
         System.out.println(workerList);
-
         System.out.println("---".repeat(5));
 
-        workerList.sort((o1, o2) -> o1.getAge() - o2.getAge());
-        System.out.println(workerList);
-
-        workerList.sort(new WorkerSalaryComparator());
-        System.out.println();
-        System.out.println("После сортировки по имени:");
         workerList.sort(new WorkerNameComparator());
-        for (Worker w: workerList) {
-            System.out.println(w.getSurname()  + " " + w.getName() + " " + w.getMiddleName());
-        }
+        System.out.println("---".repeat(5) + " После сортировки по имени с помощью WorkerNameComparator():");
+        System.out.println(workerList);
+
+        System.out.println();
+        System.out.println("---------------- НАЗНАЧЕНИЕ ЗАДАЧ ----------------------------------------");
+        System.out.println();
+        workerList.get(1).assign("контролировать количество мух в офисе");
+        workerList.get(0).assign("присматривать за " + workerList.get(1).getSurname());
+        workerList.get(0).assign("обеспечить средствами ПВО сотрудника Denisov" , workerList.get(3));
+        workerList.get(1).assign("обеспечить средствами ПВО сотрудника Denisov" , workerList.get(3));
+        workerList.get(0).assign("наладить работу станции радиолокации" , workerList.get(6));
+        workerList.get(2).assign("обеспечить поставку горячего кофе истребителю мух Denisov");
+
+
+        System.out.println("Отныне список задач выглядит так:");
+        System.out.println(Task.getTaskList());
     }
 
     public static double getAverageAge(Worker[] array) {

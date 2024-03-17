@@ -92,7 +92,7 @@ public class Worker implements Comparable<Worker> {
 
     @Override
     public String toString() {
-        return "Worker{" +
+        return "\nWorker{" +
                 "surname='" + surname + '\'' +
                 ", name='" + name + '\'' +
                 ", middleName='" + middleName + '\'' +
@@ -100,17 +100,17 @@ public class Worker implements Comparable<Worker> {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", salary=" + salary +
                 ", age=" + this.getAge() +
-                '}';
+                "}";
     }
 
-    public static void addSalary(Worker[] workers, int age, int addAmount) {
-        for (Worker worker : workers) {
-            if (worker.getAge() >= age) {
-                worker.setSalary(worker.getSalary() + addAmount);
-            }
-        }
-        System.out.println("Зарплата повышена успешно!!!");
-    }
+//    public static void addSalary(Worker[] workers, int age, int addAmount) {
+//        for (Worker worker : workers) {
+//            if (worker.getAge() >= age) {
+//                worker.setSalary(worker.getSalary() + addAmount);
+//            }
+//        }
+//        System.out.println("Зарплата повышена успешно!!!");
+//    }
 
     @Override
     public int compareTo(Worker o) {

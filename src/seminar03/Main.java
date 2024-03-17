@@ -61,8 +61,9 @@ public class Main {
         workerList.get(1).assign("контролировать количество мух в офисе");
         workerList.get(0).assign("присматривать за " + workerList.get(1).getSurname());
         workerList.get(0).assign("обеспечить средствами ПВО сотрудника Denisov" , workerList.get(3));
-        workerList.get(1).assign("обеспечить средствами ПВО сотрудника Denisov" , workerList.get(3));
+        workerList.get(1).assign("не мешать Denisov" , workerList.get(3));
         workerList.get(0).assign("наладить работу станции радиолокации" , workerList.get(6));
+        workerList.get(0).assign("наладить работу станции радиолокации" , workerList.get(5));
         workerList.get(2).assign("обеспечить поставку горячего кофе истребителю мух Denisov");
 
 
